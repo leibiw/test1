@@ -1,0 +1,36 @@
+name: Output information
+on: workflow_dispatch
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Github context
+        run: echo "${{ toJSON(github) }}"
+      # - name: Output information  
+      #   run: |
+      #     echo "The current branch is $GITHUB_REF"
+      #     echo "The event that triggered the workflow was $GITHUB_EVENT_NAME"
+      #     echo "The person who triggered or pushed the commit is $GITHUB_ACTOR"
+      #     echo "The commit SHA is $GITHUB_SHA"
+      #     echo "The repository is $GITHUB_REPOSITORY"
+      #     echo "The workflow is $GITHUB_WORKFLOW"
+      #     echo "The action is $GITHUB_ACTION"
+      #     echo "The workflow run ID is $GITHUB_RUN_ID"
+      #     echo "The workflow run number is $GITHUB_RUN_NUMBER"
+      #     echo "The name of the person or app that initiated the workflow is $GITHUB_ACTOR"
+      #     echo "The name of the webhook event that triggered the workflow is $GITHUB_EVENT_NAME"
+      #     echo "The path to the workflow directory is $GITHUB_WORKSPACE"
+      #     echo "The name of the workflow is $GITHUB_WORKFLOW"
+      #     echo "The name of the action is $GITHUB_ACTION"
+      #     echo "The name of the person or app that initiated the workflow is $GITHUB_ACTOR"
+      #     echo "The name of the webhook event that triggered the workflow is $GITHUB_EVENT_NAME"
+      #     echo "The path to the workflow directory is $GITHUB_WORKSPACE"
+      #     echo "The name of the workflow is $GITHUB_WORKFLOW"
+      #     echo "The name of the action is $GITHUB_ACTION"
+      #     echo "The name of the person or app that initiated the workflow is $GITHUB_ACTOR"
+      #     echo "The name of the webhook event that triggered the workflow is $GITHUB_EVENT_NAME"
+      #     echo "The path to the workflow directory is $GITHUB_WORKSPACE"
+      #     echo "The name of the workflow is $GITHUB_WORKFLOW"
+      #     echo "The name of the action is $GITHUB_ACTION"
+      #     echo "The name of the person or app that initiated the workflow is $GITHUB_ACTOR"
+      #     echo "The name of the webhook event that triggered the workflow is $GITHUB_EVENT_NAME"

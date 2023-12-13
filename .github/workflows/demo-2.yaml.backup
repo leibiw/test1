@@ -1,0 +1,46 @@
+name: Deploy a website 
+on: 
+  push:
+    branches: 
+      - main
+jobs:
+  test: # Test job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get website code
+        uses: actions/checkout@v3
+      - name: Install required dependencies 
+        run: npm ci
+      - name: Lint code
+        run: npm run lint
+      - name: Test code
+        run: npm run test
+
+  build: # Build job
+    needs: test # sequential job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get website code
+        uses: actions/checkout@v3
+      - name: Install required dependencies 
+        run: npm ci
+      - name: Build website
+        run: npm run build
+      - name: Upload artifacts # This step uploads artifacts to the GitHub Actions server
+        uses: actions/upload-artifact@v3
+        with:
+          name: website-artifacts
+          path: dist
+  
+  deploy: # Deploy job
+    needs: build # sequential job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts # This step downloads artifacts from the GitHub Actions server
+        uses: actions/download-artifact@v3
+        with:
+          name: website-artifacts
+      - name: Output artifact files
+        run: ls #${{ github.workspace }}/dist
+      - name: Deploy
+        run: echo "Deploying website..."  
